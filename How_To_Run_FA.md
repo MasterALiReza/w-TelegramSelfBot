@@ -48,8 +48,8 @@
 ابتدا پروژه را با استفاده از Git دریافت کنید:
 
 ```bash
-git clone https://github.com/yourusername/telegram-selfbot.git
-cd telegram-selfbot
+git clone https://github.com/MasterALiReza/w-TelegramSelfBot.git
+cd w-TelegramSelfBot
 ```
 
 اگر Git ندارید، می‌توانید فایل زیپ پروژه را دانلود و استخراج کنید.
