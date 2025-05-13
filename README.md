@@ -24,7 +24,7 @@
 
 1. کلون کردن مخزن
 ```bash
-git clone https://github.com/yourusername/telegram-selfbot.git
+git clone https://github.com/MasterALiReza/w-TelegramSelfBot.git
 cd telegram-selfbot
 ```
 
