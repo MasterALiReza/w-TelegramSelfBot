@@ -19,13 +19,16 @@
 - PostgreSQL (Supabase)
 - Redis
 - اطلاعات API تلگرام (API ID و API Hash)
+- (اختیاری) Docker و Docker Compose برای نصب با کانتینر
 
 ## نصب و راه‌اندازی
+
+### روش 1: نصب مستقیم
 
 1. کلون کردن مخزن
 ```bash
 git clone https://github.com/MasterALiReza/w-TelegramSelfBot.git
-cd telegram-selfbot
+cd w-TelegramSelfBot
 ```
 
 2. نصب وابستگی‌ها
@@ -41,8 +44,33 @@ cp .env.example .env
 
 4. اجرای برنامه
 ```bash
-python app.py
+python main.py
 ```
+
+### روش 2: نصب با Docker
+
+1. کلون کردن مخزن
+```bash
+git clone https://github.com/MasterALiReza/w-TelegramSelfBot.git
+cd w-TelegramSelfBot
+```
+
+2. تنظیم فایل `.env`
+```bash
+cp .env.example .env
+# ویرایش فایل .env و قرار دادن اطلاعات مورد نیاز (حداقل تنظیمات تلگرام)
+```
+
+3. ساخت و اجرای کانتینرها
+```bash
+docker-compose up -d
+```
+
+## راهنمای کامل
+
+برای راهنمای کامل و جزئیات بیشتر در مورد نصب و پیکربندی، لطفاً به فایل‌های زیر مراجعه کنید:
+- [راهنمای فارسی](How_To_Run_FA.md)
+- [English Guide](How_To_Run_EN.md)
 
 ## ساختار پروژه
 
@@ -54,7 +82,17 @@ python app.py
 - `api/`: API RESTful
 - `web/`: رابط کاربری تحت وب
 - `ai/`: ماژول‌های هوش مصنوعی
+- `database/`: مدیریت پایگاه داده و مهاجرت‌ها
+- `tests/`: تست‌های خودکار
 
 ## توسعه و مشارکت
 
 برای توسعه و مشارکت در پروژه، لطفاً به مستندات توسعه در پوشه `docs/` مراجعه کنید.
+
+## لاگ تغییرات
+
+نسخه 1.0.0:
+- نسخه اولیه پایدار با پشتیبانی از پلاگین‌ها
+- پنل مدیریت وب با React و Typescript
+- پشتیبانی از Docker و Docker Compose
+- مستندات کامل فارسی و انگلیسی
