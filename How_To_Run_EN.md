@@ -48,8 +48,8 @@ Before starting, ensure you have the following installed on your system:
 First, clone the project using Git:
 
 ```bash
-git clone https://github.com/yourusername/telegram-selfbot.git
-cd telegram-selfbot
+git clone https://github.com/MasterALiReza/w-TelegramSelfBot.git
+cd w-TelegramSelfBot
 ```
 
 If you don't have Git, you can download and extract the project's zip file.
