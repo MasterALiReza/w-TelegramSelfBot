@@ -1,0 +1,46 @@
+[tool.poetry]
+name = "telegram-selfbot"
+version = "0.1.0"
+description = "سلف بات تلگرام با قابلیت‌های پیشرفته"
+authors = ["Your Name <your.email@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pyrogram = "^2.0.106"
+telethon = "^1.28.0"
+fastapi = "^0.100.0"
+uvicorn = "^0.23.0"
+pydantic = "^2.0.0"
+supabase = "^1.0.3"
+redis = "^4.6.0"
+pyyaml = "^6.0"
+python-dotenv = "^1.0.0"
+jinja2 = "^3.1.2"
+celery = "^5.3.1"
+aiohttp = "^3.8.5"
+openai = "^0.27.8"
+pillow = "^10.0.0"
+cryptography = "^41.0.3"
+alembic = "^1.12.0"
+pytest = "^7.4.0"
+docker = "^6.1.3"
+
+[tool.poetry.dev-dependencies]
+black = "^23.7.0"
+flake8 = "^6.1.0"
+isort = "^5.12.0"
+mypy = "^1.5.0"
+pytest-cov = "^4.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 88

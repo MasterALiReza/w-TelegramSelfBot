@@ -1,0 +1,87 @@
+# کش پایتون
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# سشن‌های تلگرام
+*.session
+*.session-journal
+
+# محیط مجازی
+venv/
+ENV/
+.env
+
+# فایل‌های لاگ
+logs/
+*.log
+
+# فایل‌های دیتابیس
+*.db
+*.sqlite
+*.sqlite3
+
+# فایل‌های کش
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# فایل‌های موقت
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# فایل‌های سیستم عامل
+.DS_Store
+Thumbs.db
+
+# فایل‌های IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# نود ماژول‌ها و فایل‌های npm
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+.npm/
+
+# فایل‌های دیتا
+data/sessions/
+tokens/
+
+# فایل‌های خروجی
+unit_test_report_*.log
+test_report_*.log
+*.md.html
+debug_report.json
+
+# فایل‌های دیپلوی
+.netlify/
+.vercel/
+
+# فایل‌های لاکی
+package-lock.json
+yarn.lock

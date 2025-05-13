@@ -1,0 +1,32 @@
+{
+    "app_name": "Telegram SelfBot",
+    "version": "1.0.0",
+    "debug": false,
+    "timezone": "Asia/Tehran",
+    "admins": [],
+    "plugin_settings": {
+        "auto_update": true,
+        "update_check_interval": 3600,
+        "disabled_plugins": []
+    },
+    "telegram_settings": {
+        "api_layer": 176,
+        "device_model": "Desktop",
+        "system_version": "Windows 10",
+        "app_version": "1.0.0",
+        "lang_code": "fa",
+        "system_lang_code": "fa"
+    },
+    "api_settings": {
+        "host": "0.0.0.0",
+        "port": 8000,
+        "allowed_origins": ["*"],
+        "token_expire_minutes": 60
+    },
+    "web_settings": {
+        "port": 3000,
+        "enable_https": false,
+        "https_cert": "",
+        "https_key": ""
+    }
+}

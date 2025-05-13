@@ -1,0 +1,130 @@
+version: '3.8'
+
+services:
+  # سرویس اصلی سلف بات
+  selfbot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: telegram_selfbot
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - supabase_db
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+      - ./plugins:/app/plugins
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SUPABASE_URL=http://supabase_db:54321
+      - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
+    networks:
+      - selfbot_network
+
+  # سرویس API سلف بات
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: selfbot_api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - supabase_db
+      - selfbot
+    volumes:
+      - ./api:/app/api
+      - ./logs:/app/logs
+    env_file:
+      - .env
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SUPABASE_URL=http://supabase_db:54321
+      - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0
+    networks:
+      - selfbot_network
+
+  # سرویس پنل مدیریت وب
+  webapp:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: selfbot_webapp
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      - API_URL=http://api:8000
+    networks:
+      - selfbot_network
+
+  # سرویس Redis برای کش و مدیریت وظایف پس‌زمینه
+  redis:
+    image: redis:7-alpine
+    container_name: selfbot_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    command: redis-server --save 60 1 --loglevel warning
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - selfbot_network
+
+  # پراکسی برای تلگرام (اختیاری، برای دسترسی بهتر به API تلگرام)
+  mtproxy:
+    image: telegrammessenger/proxy:latest
+    container_name: selfbot_mtproxy
+    ports:
+      - "8888:443"
+    restart: unless-stopped
+    environment:
+      - SECRET=00000000000000000000000000000000
+    networks:
+      - selfbot_network
+
+  # سرویس دیتابیس Supabase (PostgreSQL)
+  supabase_db:
+    image: supabase/postgres:15.1.0.73
+    container_name: selfbot_supabase
+    ports:
+      - "54321:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/migrations:/docker-entrypoint-initdb.d
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - selfbot_network
+
+volumes:
+  redis_data:
+    driver: local
+  postgres_data:
+    driver: local
+
+networks:
+  selfbot_network:
+    driver: bridge

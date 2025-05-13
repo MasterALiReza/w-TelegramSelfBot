@@ -1,0 +1,42 @@
+گزارش اجرای تست - 2025-05-13 17:45:24
+================================================================================
+
+تعداد کل تست‌ها: 4
+تست‌های موفق: 0
+تست‌های ناموفق: 4
+
+جزئیات اجرای تست‌ها:
+================================================================================
+
+تست‌های واحد - ❌ ناموفق
+خروجی خطا:
+C:\Python313\Lib\site-packages\pytest_asyncio\plugin.py:217: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+
+
+تست‌های یکپارچه‌سازی - ❌ ناموفق
+خروجی خطا:
+ImportError while loading conftest 'C:\Users\Mast3\OneDrive\Documents\GitHub Rep\Telegram SelfBot\tests\integration\conftest.py'.
+tests\integration\conftest.py:10: in <module>
+    from core.config import Config
+E   ModuleNotFoundError: No module named 'core.config'
+
+
+تست‌های End-to-End - ❌ ناموفق
+خروجی خطا:
+ImportError while loading conftest 'C:\Users\Mast3\OneDrive\Documents\GitHub Rep\Telegram SelfBot\tests\e2e\conftest.py'.
+tests\e2e\conftest.py:11: in <module>
+    from fastapi.testclient import TestClient
+E   ModuleNotFoundError: No module named 'fastapi'
+
+
+تست پوشش کد - ❌ ناموفق
+خروجی خطا:
+C:\Python313\Lib\site-packages\pytest_asyncio\plugin.py:217: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the fixture caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to function scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))
+
+
